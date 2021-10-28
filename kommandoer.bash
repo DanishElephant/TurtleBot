@@ -7,3 +7,6 @@ roslaunch turtlebot_bringup minimal.launch
 source /opt/ros/kinetic/setup.bash
 source catkin_ws/devel/setup.bash
 rosrun turtlemovement turtlemovement_node
+
+cd catkin_ws
+catkin_make
