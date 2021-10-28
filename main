@@ -1,1 +1,2 @@
-#Her skriver vi koden til første node
+inport rospy 
+
