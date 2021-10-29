@@ -11,8 +11,9 @@ int main(int argc, char **argv)
   
   ros::init(argc, argv, "turtlemover");
   ros::NodeHandle n;
-
- 
+  
+  sound_play::SoundClient sc;
+  
   ros::Publisher chatter_pub = n.advertise<geometry_msgs::Twist>("/cmd_vel_mux/input/teleop", 1000);
   ros::Publisher singer_pub = n.advertise<kobuki_msgs::Sound>("/mobile_base/commands/sound", 1000);
 
@@ -20,6 +21,7 @@ int main(int argc, char **argv)
 
   geometry_msgs::Twist msg;
   kobuki_msgs::Sound smsg;
+  
   //Drej 8 grader
   msg.angular.z = -1.9;
   msg.linear.x = 0;
@@ -79,7 +81,8 @@ int main(int argc, char **argv)
   msg.angular.z = 2;
   msg.linear.x = 0;
   singer_pub.publish(smsg);
-  for (size_t i = 0; i < 20; i++)
+  //smsg.sc.playWaveFromPkg("sound_play", "sounds/MARIO.ogg");
+  for (size_t i = 0; i < 30; i++)
   {
     if (i%2==0) {
       msg.angular.z = 2;
