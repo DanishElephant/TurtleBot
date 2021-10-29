@@ -17,37 +17,54 @@ int main(int argc, char **argv)
   ros::Rate loop_rate(10);
 
   geometry_msgs::Twist msg;
-  /*første strækning på 153,7 cm*/
+  
+  //Drej 8 grader
+  msg.angular.z = 1.9;
+  msg.linear.x = 0;
+  for (size_t i = 0; i < 2; i++)
+  {
+    chatter_pub.publish(msg);
+      loop_rate.sleep();
+  }
+  
+  //Kør 153cm
+  msg.angular.z = 0;
   msg.linear.x = 0.7;
   for (size_t i = 0; i < 24; i++)
   {
     chatter_pub.publish(msg);
       loop_rate.sleep();
   }
-  /*første drej på 13,9 grader(venstre)*/
-  msg.angular.z = -0.24;
-  msg.linear.x = 0.7;
-  for (size_t i = 0; i < 20; i++)
+  
+  //Drej 14 grader til venstre
+  msg.angular.z = -1.9;
+  msg.linear.x = 0;
+  for (size_t i = 0; i < 4; i++)
   {
     chatter_pub.publish(msg);
       loop_rate.sleep();
   }
-  /*anden strækning på 261 cm*/
+  
+  //Kør 261cm
+  msg.angular.z = 0;
   msg.linear.x = 0.7;
-  for (size_t i = 0; i < 50; i++)
+  for (size_t i = 0; i < 30; i++)
   {
     chatter_pub.publish(msg);
       loop_rate.sleep();
   }
-/*andet drej på 18,8 grader(højre)*/
-  msg.angular.z = 0.33;
-  msg.linear.x = 0.7;
-  for (size_t i = 0; i < 20; i++)
+  
+//Drej 19 grader til højre
+  msg.angular.z = 1.9;
+  msg.linear.x = 0;
+  for (size_t i = 0; i < 6; i++)
   {
     chatter_pub.publish(msg);
       loop_rate.sleep();
   }
-/*slutspurten antal cm ikke kendt*/
+  
+//Kør i mål - slutspurten
+  msg.angular.z = 0;
   msg.linear.x = 0.7;
   for (size_t i = 0; i < 30; i++)
   {
